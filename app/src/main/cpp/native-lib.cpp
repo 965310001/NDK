@@ -5,6 +5,16 @@
 
 extern "C"
 JNIEXPORT void JNICALL
+Java_com_example_administrator_ndk_MainActivity_testMap(JNIEnv *env, jobject instance,
+                                                        jobject map) {
+    jclass jclass1=env->GetObjectClass(map);
+    jmethodID jmethodID1=env->GetMethodID(jclass1,"get","(Ljava/lang/Object;)L/java/lang/String");
+    jstring jstring1= (jstring) env->CallObjectMethod(map, jmethodID1,env->NewStringUTF("name"));
+    __android_log_print(ANDROID_LOG_INFO,"JNI","%s",env->GetStringUTFChars(jstring1,NULL));
+}
+
+extern "C"
+JNIEXPORT void JNICALL
 Java_com_example_administrator_ndk_MainActivity_testInt(JNIEnv *env, jobject instance, jint i,jboolean jboolean1,jchar jchar1,
                                                         jstring jstring1,jobjectArray jarray1,jintArray jintArray1,
 jcharArray jcharArray1,jbooleanArray jbooleanArray1) {
